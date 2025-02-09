@@ -13,6 +13,8 @@ from datetime import datetime
 import uuid
 import logging
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware
+import os
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
