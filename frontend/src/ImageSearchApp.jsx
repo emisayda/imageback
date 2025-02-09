@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Image, AlertCircle, RefreshCw } from 'lucide-react';
 
-const BACKEND_URL = 'http://localhost:5000';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
 const POLLING_INTERVAL = 2000; // Poll every 2 seconds
 
 // Custom Alert Component
