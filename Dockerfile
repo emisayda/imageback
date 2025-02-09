@@ -1,4 +1,4 @@
-# Use Python 3.9 slim image as base
+
 FROM python:3.9-slim
 
 # Set environment variables
@@ -6,6 +6,7 @@ ENV PYTHONUNBUFFERED=1
 ENV DEBIAN_FRONTEND=noninteractive
 ENV CHROME_BIN=/usr/bin/chromium
 ENV CHROMEDRIVER_PATH=/usr/bin/chromedriver
+ENV ALLOWED_ORIGINS="http://localhost:3000,https://your-frontend-url.onrender.com"
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -18,7 +19,6 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
-# Create and set working directory
 WORKDIR /app
 
 # Install Python dependencies
@@ -37,7 +37,6 @@ USER appuser
 
 # Set up virtual display
 ENV DISPLAY=:99
-ENV PYTHONPATH=/app
 
 # Start Xvfb and run the application
 CMD xvfb-run --server-args="-screen 0 1280x800x24 -ac" \
